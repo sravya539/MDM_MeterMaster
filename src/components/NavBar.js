@@ -2,8 +2,6 @@ import { Typography, AppBar, Box, CssBaseline, Toolbar, } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-
-
 const NavBar=()=>{
     return(
         <>

@@ -5,19 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Stack,Grid,Button,TextField } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-    },
-  },
-  button: {
-    margin: theme.spacing(1),
-  }
-}))
-
+import useStyles from './useStyle';
 function Make() {
   const classes = useStyles()
   const [inputFields, setInputFields] = useState([

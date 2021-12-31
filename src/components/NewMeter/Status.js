@@ -5,18 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Stack, Grid, TextField, Button } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-        },
-    },
-    button: {
-        margin: theme.spacing(1),
-    }
-}))
+import useStyles from './useStyle';
 
 function Status() {
     const classes = useStyles()
@@ -82,11 +71,11 @@ function Status() {
                 <br />
                 <Grid container direction="column" alignItems="center" justify="center">
                     <Stack spacing={2} direction="row">
-                        <Button variant="outlined" color="error" onClick={clearField}>
+                        <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '40px'}} variant="outlined" color="error" onClick={clearField}>
                             Clear
-                        </Button>
+                        </Button>   
 
-                        <Button variant="contained" onClick={addField}>Submit</Button>
+                        <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '40px'}} variant="contained" onClick={addField}>Submit</Button>
                     </Stack>
                 </Grid>
             </form>

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {Tabs,Tab,Typography,Box,Grid} from '@mui/material';
 import Metermaster from './NewMeter/Metermaster';
 import Category from './NewMeter/Category';
 import Make from './NewMeter/Make';
@@ -11,7 +8,6 @@ import Type from './NewMeter/Type';
 import ClassofAccuracy from './NewMeter/ClassOfAccuracy';
 import Status from './NewMeter/Status';
 import Change from './NewMeter/Change';
-import { Grid } from '@mui/material';
 
 
 

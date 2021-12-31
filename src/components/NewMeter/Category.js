@@ -4,19 +4,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import IconButton from '@material-ui/core/IconButton';
 import { Stack, Grid, TextField, Button } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
-
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-        },
-    },
-    button: {
-        margin: theme.spacing(1),
-    }
-}))
+import useStyles from './useStyle';
 
 function Category() {
     const classes = useStyles()
@@ -91,7 +79,7 @@ function Category() {
                         <Button variant="outlined" color="error" onClick={clearField}>
                             Clear
                         </Button>
-                        <Button variant="outlined" onClick={addField}>Submit</Button>
+                        <Button className={classes.button} variant="outlined" onClick={addField}>Submit</Button>
                     </Stack>
                 </Grid>
             </form>
