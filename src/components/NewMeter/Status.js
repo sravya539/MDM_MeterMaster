@@ -18,16 +18,14 @@ function Status() {
         console.log("InputFields", inputFields);
     };
 
-    const handleChangeInput = (id, event) => {
-        const newInputFields = inputFields.map(i => {
-            if (id === i.id) {
-                i[event.target.name] = event.target.value
-            }
-            return i;
-        })
-
-        setInputFields(newInputFields);
-    }
+    const handleChangeInput = (index, event) => {
+        const values = [...inputFields];
+        values[index][event.target.name]= event.target.value;
+        setInputFields(values)
+          
+    
+          
+      }
 
     const handleAddFields = () => {
         setInputFields([...inputFields, { id: uuidv4(), status: '' }])
@@ -47,8 +45,8 @@ function Status() {
     return (
         <Grid container direction="column" alignItems="center" justify="center">
             <form className={classes.root} onSubmit={handleSubmit}>
-                {inputFields.map(inputField => (
-                    <div key={inputField.id}>
+                {inputFields.map((inputField,index) => (
+                    <div key={index}>
                         <IconButton disabled={inputFields.length === 1} onClick={() => handleRemoveFields(inputField.id)}>
                             <RemoveCircleIcon />
                         </IconButton>
@@ -57,7 +55,7 @@ function Status() {
                             label="Status"
                             variant="standard"
                             value={inputField.status}
-                            onChange={event => handleChangeInput(inputField.id, event)}
+                            onChange={event => handleChangeInput(index, event)}
                         />
 
 
@@ -71,11 +69,11 @@ function Status() {
                 <br />
                 <Grid container direction="column" alignItems="center" justify="center">
                     <Stack spacing={2} direction="row">
-                        <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '40px'}} variant="outlined" color="error" onClick={clearField}>
+                        <Button variant="outlined" color="error" onClick={clearField}>
                             Clear
-                        </Button>   
+                        </Button>
 
-                        <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '40px'}} variant="contained" onClick={addField}>Submit</Button>
+                        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                     </Stack>
                 </Grid>
             </form>

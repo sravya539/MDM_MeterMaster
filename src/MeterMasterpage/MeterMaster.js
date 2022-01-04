@@ -6,12 +6,12 @@ import MeterMasterSub from "./MeterMasterSub";
 import { styled } from '@mui/material/styles';
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
-import { FormControl } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import { Link } from "@mui/material";
 import { Box } from "@mui/material";
 import useStyles from "../components/NewMeter/useStyle";
-
+import {CssBaseline } from '@mui/material';
+import { useState } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -20,77 +20,166 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
+const dropdowns = [
+    {
+        value: '1',
+        label: 'South',
+    },
+    {
+        value: '2',
+        label: 'North',
+    },
+    {
+        value: '3',
+        label: 'East',
+    },
+    {
+        value: '4',
+        label: 'West',
+    },
+];
+
 const MeterMaster = () => {
+
+    const classes = useStyles();
     return (
         <card >
-            <br />
-            <Grid container direction="column" allignItems="center" justify="center">
+            <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 2, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <CssBaseline />
+    
+
+            <Box sx={{ display: 'flex', p: 1, m: 1, bgcolor: 'background.paper', flexDirection: 'row', }}>
+            </Box>
+
+            <div>
                 <Grid container direction="row" justifyContent="center" alignContent="center" >
-        
-                    <Grid item xs={4} justifyContent="center" alignContent="center">
-                        <FormControl>
-                            Discom: <TextField id="outlined-basic" label="TSSPDCL" variant="outlined" />
-                        </FormControl>
-                    </Grid>
-                   
-                    <Grid Rowspacing={10} Item={Card} item xs={6} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            Circle:<MeterMasterSub/>                       
-                        </Grid>
-                    </Grid>  
-                 
+                    <TextField
+                        id="outlined-select-currency-native"
+                        required label="Discom:"
+                        defaultValue="TSSCPDL"
+                    >
+
+                    </TextField>
+
+                    <TextField
+                        id="outlined-select-currency-native"
+                        select
+                        required label="Region: "
+                        SelectProps={{
+                            native: true,
+                        }}
+                    >
+                        {dropdowns.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </TextField>
                 </Grid>
-                <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid Item={Card} xs={12} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            Region:<MeterMasterSub /></Grid></Grid>
-                    <Grid Item={Card} xs={12} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            Division:<MeterMasterSub /></Grid></Grid>
-                </Grid>
-                <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid Item={Card} xs={6} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            SubDivision:<MeterMasterSub /></Grid></Grid>
-                    <Grid Item={Card} xs={12} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            Section:<MeterMasterSub /></Grid></Grid>
-                </Grid>
-                <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid Item={Card} xs={12} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            SubStation:<MeterMasterSub /></Grid></Grid>
-                    <Grid Item={Card} xs={12} md={6} lg={4} rowSpacing={10}>
-                        <Grid item xs={6} justifyContent="center" alignContent="center">
-                            Feeder:<MeterMasterSub /></Grid></Grid>
-                </Grid>
-                <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid item xs={4} justifyContent="center" alignContent="center">
-                        <FormControl>
-                            DTR:<TextField id="outlined-basic" label="DTR value" variant="outlined" />
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="center" alignContent="center">
-                        <FormControl>
-                            Meter No:<TextField id="outlined-basic" label="Meter No" variant="outlined" />
-                        </FormControl>
-                    </Grid>
-                </Grid>
-                <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid item xs={4} justifyContent="center" alignContent="center">
-                        <FormControl>
-                            Service No:<TextField id="outlined-basic" label="Service No" variant="outlined" />
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="center" alignContent="center">
-                        <FormControl>
-                            ConsumerName:<TextField id="outlined-basic" label="Consumer Name" variant="outlined" />
-                        </FormControl>
-                    </Grid>
-                </Grid>
+            </div>
+            <Grid container direction="row" justifyContent="center" alignContent="center" >
+                <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="Circle:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
+
+
+                <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="Division:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
             </Grid>
-            <br />
-            <Stack paddingRight={20} spacing={2} direction="row" justifyContent="center">
+
+            <Grid container direction="row" justifyContent="center" alignContent="center" >
+            <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="SubDivision:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
+                <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="Section:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
+            </Grid>
+
+            <Grid container direction="row" justifyContent="center" alignContent="center" >
+            <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="SubStation:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
+
+                <TextField
+                    id="outlined-select-currency-native"
+                    select
+                    required label="Feeder:"
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                </TextField>
+            </Grid>
+
+            <Grid container direction="row" justifyContent="center" alignContent="center" >
+                <div>
+                    <TextField
+                        id="outlined-select-currency-native"
+                        required label="DTR: "
+                    >
+                    </TextField>
+                    <TextField
+                        id="outlined-select-currency-native"
+                        required label="Meter No: "
+                    ></TextField>
+                </div>
+            </Grid>
+
+            <Grid container direction="row" justifyContent="center" alignContent="center" >
+                <div>
+                    <TextField
+                        id="outlined-select-currency-native"
+                        required label="Service No: "
+                    >
+                    </TextField>
+                    <TextField
+                        id="outlined-select-currency-native"
+                        required label="ConsumerName: "
+                    ></TextField>
+                </div>
+            </Grid>
+            </Box>
+    
+            <Stack paddingTop={2} spacing={3} direction="row" justifyContent="center">
                 <Button variant="contained"> <Link href="search" color="inherit" underline="none">
                     SEARCH
                 </Link> </Button>

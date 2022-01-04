@@ -6,30 +6,31 @@ import { Stack, Grid, TextField, Button } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import useStyles from './useStyle';
 
+
 function Category() {
     const classes = useStyles()
     const [inputFields, setInputFields] = useState([
-        { id: uuidv4(), firstName: '', lastName: '' },
+        { id: uuidv4(), categoryCode: '', categoryName: '' },
     ]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("InputFields", inputFields);
+        
+        
     };
 
-    const handleChangeInput = (id, event) => {
-        const newInputFields = inputFields.map(i => {
-            if (id === i.id) {
-                i[event.target.name] = event.target.value
-            }
-            return i;
-        })
+    const handleChangeInput = (index, event) => {
+      const values = [...inputFields];
+      values[index][event.target.name]= event.target.value;
+      setInputFields(values)
+        
 
-        setInputFields(newInputFields);
+        
     }
 
     const handleAddFields = () => {
-        setInputFields([...inputFields, { id: uuidv4(), firstName: '', lastName: '' }])
+        setInputFields([...inputFields, { id: uuidv4(), categoryCode: '', categoryName: '' }])
     }
 
     const handleRemoveFields = id => {
@@ -38,32 +39,30 @@ function Category() {
         setInputFields(values);
     }
     const clearField = () => {
-        alert("elements cleared")
-    }
-    const addField = () => {
-        alert("elements submitted")
+        setInputFields(" ")
     }
     return (
         <Grid container direction="column" alignItems="center" justify="center">
             <form className={classes.root} onSubmit={handleSubmit}>
-                {inputFields.map(inputField => (
-                    <div key={inputField.id}>
+                {inputFields.map((inputField,index) => (
+                    <div key={index}>
                         <IconButton disabled={inputFields.length === 1} onClick={() => handleRemoveFields(inputField.id)}>
                             <RemoveCircleIcon />
                         </IconButton>
                         <TextField
-                            name="firstName"
+                            name="categoryCode"
                             label="Category Code"
                             variant="standard"
-                            value={inputField.firstName}
-                            onChange={event => handleChangeInput(inputField.id, event)}
+                            value={inputField.categoryCode}
+                            onChange={event => handleChangeInput(index, event)}
                         />
                         <TextField
-                            name="lastName"
+                            name="categoryName"
                             label="Category Name"
                             variant="standard"
-                            value={inputField.lastName}
-                            onChange={event => handleChangeInput(inputField.id, event)}
+                            value={inputField.categoryName}
+                            onChange={event => handleChangeInput(index, event)}
+                            
                         />
 
                         <IconButton
@@ -79,7 +78,8 @@ function Category() {
                         <Button variant="outlined" color="error" onClick={clearField}>
                             Clear
                         </Button>
-                        <Button className={classes.button} variant="outlined" onClick={addField}>Submit</Button>
+
+                        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                     </Stack>
                 </Grid>
             </form>

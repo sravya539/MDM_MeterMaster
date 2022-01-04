@@ -5,6 +5,16 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
+    card: {
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      border: '1px solid black',
+      borderRadius: '5px',
+      textAlign: 'center',
+    },
   },
   button: {
     margin: theme.spacing(1),

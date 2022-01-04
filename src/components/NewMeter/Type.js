@@ -10,7 +10,7 @@ import useStyles from './useStyle';
 function Type() {
     const classes = useStyles()
     const [inputFields, setInputFields] = useState([
-        { id: uuidv4(), firstName: '' },
+        { id: uuidv4(), type: '' },
     ]);
 
     const handleSubmit = (e) => {
@@ -18,15 +18,13 @@ function Type() {
         console.log("InputFields", inputFields);
     };
 
-    const handleChangeInput = (id, event) => {
-        const newInputFields = inputFields.map(i => {
-            if (id === i.id) {
-                i[event.target.name] = event.target.value
-            }
-            return i;
-        })
+    const handleChangeInput = (index, event) => {
+        const values = [...inputFields];
+        values[index][event.target.name] = event.target.value;
+        setInputFields(values)
 
-        setInputFields(newInputFields);
+
+
     }
 
     const handleAddFields = () => {
@@ -47,17 +45,17 @@ function Type() {
     return (
         <Grid container direction="column" alignItems="center" justify="center">
             <form className={classes.root} onSubmit={handleSubmit}>
-                {inputFields.map(inputField => (
-                    <div key={inputField.id}>
+                {inputFields.map((inputField,index) => (
+                    <div key={index}>
                         <IconButton disabled={inputFields.length === 1} onClick={() => handleRemoveFields(inputField.id)}>
                             <RemoveCircleIcon />
                         </IconButton>
                         <TextField
-                            name="firstName"
+                            name="type"
                             label="Type"
                             variant="standard"
                             value={inputField.firstName}
-                            onChange={event => handleChangeInput(inputField.id, event)}
+                            onChange={event => handleChangeInput(index, event)}
                         />
 
 
@@ -75,7 +73,7 @@ function Type() {
                             Clear
                         </Button>
 
-                        <Button variant="contained" onClick={addField}>Submit</Button>
+                        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                     </Stack>
                 </Grid>
             </form>
