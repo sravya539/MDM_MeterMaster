@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useState} from "react";
 import { Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import { TextField } from "@mui/material";
@@ -11,33 +11,27 @@ import { Link } from "@mui/material";
 import { Box } from "@mui/material";
 import useStyles from "../components/NewMeter/useStyle";
 import {CssBaseline } from '@mui/material';
-import { useState } from 'react';
-
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
 const dropdowns = [
     {
         value: '1',
-        label: 'South',
+        label: 'South Region',
     },
     {
         value: '2',
-        label: 'North',
+        label: 'North Region',
     },
     {
         value: '3',
-        label: 'East',
+        label: 'East Region',
     },
     {
         value: '4',
-        label: 'West',
+        label: 'West Region',
     },
 ];
+
+
 
 const MeterMaster = () => {
 
@@ -163,7 +157,6 @@ const MeterMaster = () => {
                     ></TextField>
                 </div>
             </Grid>
-
             <Grid container direction="row" justifyContent="center" alignContent="center" >
                 <div>
                     <TextField
@@ -183,7 +176,7 @@ const MeterMaster = () => {
                 <Button variant="contained"> <Link href="search" color="inherit" underline="none">
                     SEARCH
                 </Link> </Button>
-                <Button variant="contained">CLEAR</Button>
+                <Button variant="contained" >CLEAR</Button>
                 <Button variant="contained"> <Link href="newmeter" color="inherit" underline="none">NEW METER</Link></Button>
             </Stack>
             <br />
