@@ -15,9 +15,7 @@ function Category() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("InputFields", inputFields);
-        
-        
+        console.log("InputFields", inputFields);       
     };
 
     const handleChangeInput = (index, event) => {
