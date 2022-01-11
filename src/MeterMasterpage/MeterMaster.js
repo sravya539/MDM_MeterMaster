@@ -31,8 +31,6 @@ const dropdowns = [
     },
 ];
 
-
-
 const MeterMaster = () => {
 
     const classes = useStyles();

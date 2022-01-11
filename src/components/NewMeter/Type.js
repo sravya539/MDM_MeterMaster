@@ -72,7 +72,6 @@ function Type() {
                         <Button style={{maxWidth: '400px', maxHeight: '30px', minWidth: '100px', minHeight: '30px'}} variant="outlined" color="error" onClick={clearField}>
                             Clear
                         </Button>
-
                         <Button style={{maxWidth: '400px', maxHeight: '200px', minWidth: '100px', minHeight: '30px'}}variant="contained" onClick={handleSubmit}>Submit</Button>
                     </Stack>
                 </Grid>

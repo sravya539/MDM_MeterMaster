@@ -21,10 +21,7 @@ function Status() {
     const handleChangeInput = (index, event) => {
         const values = [...inputFields];
         values[index][event.target.name]= event.target.value;
-        setInputFields(values)
-          
-    
-          
+        setInputFields(values)         
       }
 
     const handleAddFields = () => {

@@ -24,9 +24,6 @@ function Category() {
       const values = [...inputFields];
       values[index][event.target.name]= event.target.value;
       setInputFields(values)
-        
-
-        
     }
 
     const handleAddFields = () => {
